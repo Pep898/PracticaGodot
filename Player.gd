@@ -1,6 +1,7 @@
 extends Area2D
 
 signal hit
+signal hitMoneda
 
 export var speed = 400  # How fast the player will move (pixels/sec).
 var screen_size  # Size of the game window
@@ -38,10 +39,14 @@ func _process(delta):
 		$AnimatedSprite.flip_v = velocity.y > 0
 
 
-func _on_Player_body_entered( body ):
-	$CollisionShape2D.disabled = true
-	hide()
-	emit_signal("hit")
+func _on_Player_body_entered(body):
+	if body.is_in_group("moneda"):
+		emit_signal("hitMoneda")
+		
+	else:
+		emit_signal("hit")
+		$CollisionShape2D.disabled = true
+		hide()
 
 func start(pos):
 	position = pos

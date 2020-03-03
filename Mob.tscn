@@ -10,9 +10,9 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 6 ) ],
 "loop": true,
-"name": "swim",
+"name": "walk",
 "speed": 4.0
 }, {
 "frames": [ ExtResource( 1 ), ExtResource( 5 ) ],
@@ -20,9 +20,9 @@ animations = [ {
 "name": "fly",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
-"name": "walk",
+"name": "swim",
 "speed": 4.0
 } ]
 
@@ -34,6 +34,7 @@ height = 3.92364
 position = Vector2( 46.4522, -0.226418 )
 rotation = 1.5708
 collision_mask = 0
+gravity_scale = 0.0
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
@@ -41,9 +42,8 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 1.32074, 0.754698 )
-scale = Vector2( 0.725766, 0.74007 )
+scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 1 )
-animation = "fly"
 __meta__ = {
 "_edit_group_": true
 }

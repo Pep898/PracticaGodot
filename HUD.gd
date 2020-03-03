@@ -1,7 +1,10 @@
 extends CanvasLayer
 
 signal start_game
+signal moneda
 
+var scoreHUD=0
+var noMoneda=0
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -13,8 +16,11 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):	
+	if(scoreHUD%20==0 || (scoreHUD-1)%20==0) && (scoreHUD!=0 && scoreHUD!=1):
+		if (scoreHUD-noMoneda)>18:
+			emit_signal("moneda")
+			noMoneda=scoreHUD
 
 func show_message(text):
 	$MessageLabel.text = text
@@ -30,7 +36,8 @@ func show_game_over():
 	$StartButton.show()
 
 func update_score(score):
-	$ScoreLabel.text = str(score)
+	scoreHUD+=score
+	$ScoreLabel.text = str(scoreHUD)
 
 func _on_MessageTimer_timeout():
 	$MessageLabel.hide()
